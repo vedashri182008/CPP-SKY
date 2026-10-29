@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Offline OOP syllabus learning chatbot with notes and quizzes.">
+  <title>CPP SKY — C++ OOP Tutor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">O</div>
+        <div><strong>CPP SKY</strong><small>SYLLABUS ASSISTANT</small></div>
+      </div>
+      <button class="new-chat" id="new-chat"><span>＋</span> New conversation</button>
+      <p class="nav-label">LEARN</p>
+      <nav class="nav-menu" aria-label="Main navigation">
+        <button class="nav-item active" data-view="chat"><span>◈</span> Chat assistant</button>
+        <button class="nav-item" data-view="units"><span>▤</span> All units <span class="nav-count">6</span></button>
+        <button class="nav-item" data-view="notes"><span>▧</span> Study notes</button>
+        <button class="nav-item" data-view="quiz"><span>✓</span> Practice quiz</button>
+      </nav>
+      <p class="nav-label unit-label">SYLLABUS</p>
+      <div id="sidebar-units" class="sidebar-units"></div>
+      <div class="sidebar-bottom">
+        <div class="offline-pill"><span></span> Works offline · No API</div>
+        <p>Your C++ OOP syllabus companion.</p>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">Learning space <span>/</span> <strong id="top-title">Chat assistant</strong></div>
+        <div class="top-actions"><span class="status-dot"></span><span>Local study mode</span></div>
+      </header>
+
+      <section class="view active-view" id="view-chat">
+        <div class="chat-heading">
+          <div class="eyebrow">YOUR PERSONAL C++ OOP TUTOR</div>
+          <h1>What are we learning <span>today?</span></h1>
+          <p>Ask about any topic in your six-unit C++ OOP syllabus.</p>
+        </div>
+        <div class="chat-layout">
+          <div class="chat-panel">
+            <div class="chat-messages" id="chat-messages" aria-live="polite">
+              <div class="message bot-message">
+                <div class="avatar">O</div>
+                <div class="message-content"><div class="message-name">CPP SKY <span>JUST NOW</span></div>
+                  <div class="bubble">Hi! 👋 I can help you revise all six units of Object Oriented Programming. Ask me about a topic, request notes, or try a quiz.</div>
+                </div>
+              </div>
+            </div>
+            <div class="suggestions" id="suggestions">
+              <button data-prompt="Explain encapsulation with a C++ example">Encapsulation</button>
+              <button data-prompt="Explain inheritance and its types">Types of inheritance</button>
+              <button data-prompt="What is a virtual function?">Virtual functions</button>
+              <button data-prompt="Give me file handling notes">File handling</button>
+            </div>
+            <form class="chat-composer" id="chat-form">
+              <input id="chat-input" autocomplete="off" placeholder="Ask a question about OOP..." aria-label="Your question">
+              <button type="submit" aria-label="Send message">➤</button>
+            </form>
+            <div class="composer-foot"><span>↳ Enter to send</span><span>Answers are based on the built-in study guide</span></div>
+          </div>
+          <aside class="quick-panel">
+            <div class="panel-title">Quick access <span>✦</span></div>
+            <button class="quick-card" data-view="units"><span class="quick-icon violet">▤</span><span><strong>Explore syllabus</strong><small>Browse all 6 units</small></span><b>›</b></button>
+            <button class="quick-card" data-view="notes"><span class="quick-icon blue">▧</span><span><strong>Revision notes</strong><small>Definitions & examples</small></span><b>›</b></button>
+            <button class="quick-card" data-view="quiz"><span class="quick-icon green">✓</span><span><strong>Test your knowledge</strong><small>Practice MCQs</small></span><b>›</b></button>
+            <div class="coverage-card"><div class="coverage-top"><span>SYLLABUS COVERAGE</span><strong>6 units</strong></div><div class="coverage-bar"><span></span></div><p>Introduction · Inheritance · Polymorphism · Files · Exceptions · STL</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-units">
+        <div class="page-heading"><div class="eyebrow">COURSE CONTENT</div><h1>Explore your <span>syllabus</span></h1><p>Choose a unit to review its key topics and jump into a related chat.</p></div>
+        <div class="unit-grid" id="unit-grid"></div>
+      </section>
+
+      <section class="view" id="view-notes">
+        <div class="page-heading"><div class="eyebrow">QUICK REVISION</div><h1>Study <span>notes</span></h1><p>Search your syllabus notes or select a unit to focus your revision.</p></div>
+        <div class="notes-toolbar"><input id="notes-search" placeholder="Search topics, e.g. constructor, STL..." aria-label="Search notes"><select id="notes-unit" aria-label="Filter by unit"><option value="all">All units</option></select></div>
+        <div id="notes-list" class="notes-list"></div>
+      </section>
+
+      <section class="view" id="view-quiz">
+        <div class="page-heading"><div class="eyebrow">CHECK YOUR UNDERSTANDING</div><h1>Practice <span>quiz</span></h1><p>Answer MCQs from across the six units. Your score is calculated in this browser.</p></div>
+        <div class="quiz-toolbar"><label for="quiz-unit">Choose unit</label><select id="quiz-unit"><option value="all">All units</option></select><button id="start-quiz" class="primary-button">Start quiz <span>→</span></button></div>
+        <div id="quiz-area" class="quiz-area"><div class="empty-state"><div class="empty-icon">✓</div><h3>Ready to test yourself?</h3><p>Choose a unit or practise questions from the full syllabus.</p><button class="primary-button" id="start-quiz-empty">Start a quiz <span>→</span></button></div></div>
+      </section>
+
+      <footer class="footer"><span>CPP SKY</span><span>HTML · CSS · JavaScript · No API / authentication</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="data/oop-content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
